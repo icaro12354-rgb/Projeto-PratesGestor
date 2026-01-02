@@ -1,0 +1,1 @@
+// Este arquivo foi intencionalmente deixado em branco para remover o service worker de notificações push.

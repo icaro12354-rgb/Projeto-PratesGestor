@@ -1,0 +1,47 @@
+{
+  "rules": {
+    ".read": "auth.token.email === 'icaro12354@gmail.com'",
+    ".write": "auth.token.email === 'icaro12354@gmail.com'",
+    "teachers": {
+      ".indexOn": ["uid", "username"],
+      ".read": "auth != null",
+      "$teacherId": {
+        ".write": "data.child('uid').val() === auth.uid || newData.child('uid').val() === auth.uid"
+      }
+    },
+    "students": {
+      ".indexOn": ["teacherId", "uid", "studentId"],
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "guardians": {
+      ".indexOn": ["studentId", "uid", "teacherId"],
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "payments": {
+      ".indexOn": ["teacherId", "studentId", "month", "year"],
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "billing": {
+      ".indexOn": ["teacherId"],
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "config": {
+      ".read": "auth != null",
+      ".write": false
+    },
+    "expenses": {
+      ".indexOn": ["teacherId"],
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "classDiary": {
+      ".indexOn": ["teacherId", "studentId"],
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}
